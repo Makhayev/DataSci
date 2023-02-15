@@ -10,7 +10,8 @@ function MainLayout({ children }: PropsWithChildren) {
     <FetchConfig baseUrl="/api">
       <html>
         <head>
-          <title>Nextjs</title>
+          <title>DataSci</title>
+          <link rel="icon" href="DataSciIcon.png" />
         </head>
         <body>
           <div className="p-8">{children}</div>
