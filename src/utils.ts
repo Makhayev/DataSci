@@ -1,5 +1,5 @@
 import type { ConnectOptions } from "mongoose";
-import { connect, connection } from "mongoose";
+import { connect } from "mongoose";
 const {
   // Attempts to connect to MongoDB and then tries to connect locally:)
   MONGO_URI = "mongodb://localhost:27017/next_test",
