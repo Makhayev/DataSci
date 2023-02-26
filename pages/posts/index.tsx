@@ -1,4 +1,3 @@
-"use client";
 import type {
   ReactElement,
   JSXElementConstructor,
@@ -6,7 +5,6 @@ import type {
   ReactPortal,
 } from "react";
 
-import Icon from "bs-icon";
 import Header from "components/Header";
 import useFetch, { revalidate } from "http-react";
 import Link from "next/link";
@@ -34,7 +32,7 @@ function Post(props: {
     | undefined;
 }) {
   // Update with proper types
-  const { reFetch } = useFetch("/posts", {
+  const { reFetch } = useFetch("/api/posts", {
     auto: false,
     id: props?._id,
     method: "DELETE",
@@ -42,7 +40,7 @@ function Post(props: {
       id: props?._id,
     },
     onResolve() {
-      revalidate("GET /posts");
+      revalidate("GET /api/posts");
     },
   });
 
@@ -63,7 +61,7 @@ function Post(props: {
           }
         }}
       >
-        <Icon name="trash" />
+        some
       </button>
       <b className="my-2">{props.title}</b>
       <br />
@@ -73,7 +71,7 @@ function Post(props: {
 }
 
 export default function Posts() {
-  const { data, loadingFirst, error } = useFetch<IPost[]>("/posts", {
+  const { data, loadingFirst, error } = useFetch<IPost[]>("/api/posts", {
     default: [],
   });
 
@@ -95,13 +93,13 @@ export default function Posts() {
           href="/"
           className="bg-red-400 inline-block px-2 rounded-md py-1 text-white cursor-pointer"
         >
-          <Icon name="arrow-left" /> Back
+          <span>Back</span>
         </Link>
         <Link
           href="/posts/create"
           className="bg-blue-400 inline-block px-2 rounded-md py-1 text-white cursor-pointer"
         >
-          Add one post <Icon name="plus" />
+          <span>Add one post</span>
         </Link>
       </div>
       <div className="py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 rounded-md">

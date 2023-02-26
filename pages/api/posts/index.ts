@@ -9,16 +9,14 @@ connectToDatabase();
 const postsHandler = Validate({
   async get(req: NextApiRequest, res: NextApiResponse) {
     try {
-      console.log(req.body, "asddddddd");
+      console.log(req);
       const posts = await Post.find();
       res.json(posts.reverse());
     } catch (err) {
-      console.log("errrrrr");
-      console.log(err);
       res.status(500).send("error");
     }
   },
-  async post(req, res) {
+  async post(req: NextApiRequest, res: NextApiResponse) {
     try {
       console.log(req.body);
       const body: IPost = JSON.parse(req.body);
@@ -30,7 +28,7 @@ const postsHandler = Validate({
       res.status(500).send("error");
     }
   },
-  async delete(req, res) {
+  async delete(req: NextApiRequest, res: NextApiResponse) {
     const { id } = req.query;
     try {
       const deletedPost = await Post.findByIdAndDelete(id);
