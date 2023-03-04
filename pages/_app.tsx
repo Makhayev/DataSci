@@ -1,8 +1,9 @@
 import "styles/globals.css";
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Layout } from "src/components";
 
 import { submitLogin } from "../src/api";
@@ -24,15 +25,15 @@ export const UserContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<UserType | undefined>(undefined);
+  const router = useRouter();
   const signIn = async (values: { email: string; password: string }) => {
-    console.log(values);
     const response = await submitLogin(values.email, values.password);
-    console.log(response);
     if (!response) {
       alert("Login failed");
     } else {
       localStorage.setItem("user", JSON.stringify(response));
       setUser(response);
+      router.push("/");
     }
   };
   const signOut = () => {

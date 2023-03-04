@@ -9,12 +9,17 @@ export const Header = () => {
     <div>
       <div className="flex p-16 justify-between text-2xl items-center">
         <div className="flex">
-          <div className="mr-16">
+          <div>
             <Link href="/">Home</Link>
           </div>
-          <div>
-            <Link href="/Events">Events</Link>
+          <div className="mx-16">
+            <Link href="/events">Events</Link>
           </div>
+          {user && (
+            <div>
+              <Link href="/events/create"> Create Event</Link>
+            </div>
+          )}
         </div>
         <div className="flex">
           <div>

@@ -1,13 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { useRouter } from "next/router";
 
 import { UserContext } from "../_app";
 
 const Login = () => {
+  const router = useRouter();
+
   const { signIn, user } = useContext(UserContext);
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, []);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const submitForm = async () => {
-    console.log("hey");
     signIn({ email, password });
   };
   return (

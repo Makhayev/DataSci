@@ -9,7 +9,6 @@ connectToDatabase();
 const usersHandler = Validate({
   async post(req: NextApiRequest, res: NextApiResponse) {
     try {
-      console.log(req.body);
       const body: UserType = req.body;
       const user = await User.findOne({
         email: body.email,
@@ -23,7 +22,6 @@ const usersHandler = Validate({
   },
   async put(req: NextApiRequest, res: NextApiResponse) {
     try {
-      console.log(req.body);
       const body: UserType = req.body;
       const newUser = new User(body);
       const saved = await newUser.save();

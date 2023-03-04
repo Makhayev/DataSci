@@ -18,7 +18,6 @@ const postsHandler = Validate({
   },
   async post(req: NextApiRequest, res: NextApiResponse) {
     try {
-      console.log(req.body);
       const body: IPost = JSON.parse(req.body);
       const newPost = new Post(body);
       const saved = await newPost.save();
