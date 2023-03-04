@@ -1,6 +1,9 @@
 module.exports = {
   reactStrictMode: false,
   experimental: {
-    appDir: true,
+    appDir: false,
   },
+  env: {
+    IMG_BB_API_KEY: process.env.IMG_BB_API_KEY,
+  }
 }

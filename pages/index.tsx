@@ -21,7 +21,6 @@ export default function Home() {
           Tim-Berners Lee
         </span>
       </div>
-      <div className="flex justify-center text-6xl mt-20">Coming soon...</div>
     </div>
   );
 }
